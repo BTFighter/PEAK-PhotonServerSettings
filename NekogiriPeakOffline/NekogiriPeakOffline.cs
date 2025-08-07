@@ -47,8 +47,11 @@ namespace NekogiriMod
 
                 BuildVersion buildVersion = new BuildVersion(Application.version);
 
-                DateTime today = DateTime.UtcNow.Date; // Use DateTime.Now.Date if local time is preferred
-                int daysSinceStart = (today - startDate).Days;
+                DateTime now = DateTime.Now;
+                DateTime midnight = now.Date.AddDays(1);
+                TimeSpan timeUntilMidnight = midnight - now;
+
+                int daysSinceStart = (now.Date - startDate).Days;
                 int levelIndex = Mathf.Max(1, daysSinceStart + 1);
 
                 LoginResponse loginResponse;
@@ -58,9 +61,9 @@ namespace NekogiriMod
                     loginResponse = new LoginResponse
                     {
                         VersionOkay = true,
-                        HoursUntilLevel = 24,
-                        MinutesUntilLevel = 0,
-                        SecondsUntilLevel = 0,
+                        HoursUntilLevel = timeUntilMidnight.Hours,
+                        MinutesUntilLevel = timeUntilMidnight.Minutes,
+                        SecondsUntilLevel = timeUntilMidnight.Seconds,
                         LevelIndex = levelIndex,
                         Message = "Thanks for testing the PEAK beta. Watch out for bugs! (the current beta is the same as the live game, check back later for a new beta!)"
                     };
@@ -70,15 +73,16 @@ namespace NekogiriMod
                     loginResponse = new LoginResponse
                     {
                         VersionOkay = true,
-                        HoursUntilLevel = 24,
-                        MinutesUntilLevel = 0,
-                        SecondsUntilLevel = 0,
+                        HoursUntilLevel = timeUntilMidnight.Hours,
+                        MinutesUntilLevel = timeUntilMidnight.Minutes,
+                        SecondsUntilLevel = timeUntilMidnight.Seconds,
                         LevelIndex = levelIndex,
                         Message = "why did the chicken cross the caldera?"
                     };
                 }
 
                 response?.Invoke(loginResponse);
+
                 return false;
             }
         }
