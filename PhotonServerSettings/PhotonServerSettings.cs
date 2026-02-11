@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using BepInEx;
 using BepInEx.Configuration;
 using HarmonyLib;
@@ -101,13 +102,21 @@ namespace PhotonServerSettings
             {
                 Debug.Log("[PEAK-PhotonServerSettings] Overriding PhotonNetwork.ConnectUsingSettings");
 
-                // If we should go to offline mode, don't apply any server settings
-                if (startInOfflineMode || PhotonNetwork.OfflineMode)
+                // Check if server address is blank or contains any letters (not a valid IP address)
+                bool isServerAddressInvalid = string.IsNullOrEmpty(PhotonServerAddress.Value) || PhotonServerAddress.Value.Any(char.IsLetter);
+                
+                // If we should go to offline mode or server address is invalid, set to offline
+                if (startInOfflineMode || PhotonNetwork.OfflineMode || isServerAddressInvalid)
                 {
                     PhotonNetwork.OfflineMode = true;
+                    if (string.IsNullOrEmpty(PhotonServerAddress.Value))
+                        Debug.Log("[PEAK-PhotonServerSettings] Server address is blank, entering offline mode");
+                    else
+                        Debug.Log("[PEAK-PhotonServerSettings] Server address contains letters, entering offline mode");
                     __result = true;
                     return false;
                 }
+                
                 // Apply server settings only if we're trying to connect to online mode
                 if (!string.IsNullOrEmpty(PhotonServerAddress.Value))
                 {
@@ -138,6 +147,7 @@ namespace PhotonServerSettings
                     PhotonNetwork.PhotonServerSettings.AppSettings.AppIdVoice = PhotonAppIdVoice.Value;
                     Debug.Log($"[PEAK-PhotonServerSettings] Changed AppIdVoice: {PhotonNetwork.PhotonServerSettings.AppSettings.AppIdVoice}");
                 }
+                
                 // Continue with original method if we have server settings to apply
                 __result = true;
                 return true;
