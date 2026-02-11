@@ -1,8 +1,8 @@
 # PhotonServerSettings
 
 #### Special Thanks
-1A3Dev for [REPO-PhotonServerSettings](https://github.com/1A3Dev/REPO-PhotonServerSettings)  
-Kirigiri's for [NekogiriPeakOffline](https://github.com/KirigiriX/NekogiriPeakOfflineV2)
+**1A3Dev** for [REPO-PhotonServerSettings](https://github.com/1A3Dev/REPO-PhotonServerSettings)  
+**Kirigiri's** for [NekogiriPeakOffline](https://github.com/KirigiriX/NekogiriPeakOfflineV2)
 
 Without these mods, this wouldn't be possible!
 
