@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("NekogiriPeak")]
-[assembly: AssemblyDescription("Make Peak run offline")]
+[assembly: AssemblyTitle("PEAK-PhotonServerSettings")]
+[assembly: AssemblyDescription("Override photon settings")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Kirigiri")]
-[assembly: AssemblyProduct("NekogiriPeak")]
-[assembly: AssemblyCopyright("Kirigiri ©  2025")]
+[assembly: AssemblyCompany("PhotonLAN")]
+[assembly: AssemblyProduct("PhotonLANPeak")]
+[assembly: AssemblyCopyright("Kirigiri & 1A3Dev ©  2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
