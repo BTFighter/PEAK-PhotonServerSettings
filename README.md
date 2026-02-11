@@ -1,4 +1,4 @@
-# PhotonServerSettings
+# PEAK-PhotonServerSettings
 
 #### Special Thanks
 **1A3Dev** for [REPO-PhotonServerSettings](https://github.com/1A3Dev/REPO-PhotonServerSettings)  
