@@ -24,8 +24,8 @@ namespace PhotonServerSettings
 
         private void Awake()
         {
-            Logger.LogInfo("PEAK-PhotonServerSettings has loaded!");
-            Logger.LogInfo("[PEAK-PhotonServerSettings] Based on REPO-PhotonServerSettings");
+            Logger.LogInfo("[PEAK-PhotonServerSettings] PEAK-PhotonServerSettings has loaded!");
+            Logger.LogInfo("[PEAK-PhotonServerSettings] Based on REPO-PhotonServerSettings by 1A3Dev");
             Logger.LogInfo("[PEAK-PhotonServerSettings] Also based on NekogiriPeak by Kirigiri, made with <3 \nhttps://discord.gg/TBs8Te5nwn");
 
             // Initialize configuration
@@ -33,7 +33,7 @@ namespace PhotonServerSettings
             PhotonAppIdVoice = Config.Bind("Photon", "AppId Voice", "", new ConfigDescription("Photon Voice App ID"));
             
             PhotonServerAddress = Config.Bind("Photon", "Server", "", new ConfigDescription("Photon Server Address"));
-            PhotonServerPort = Config.Bind("Photon", "Server Port", 0, new ConfigDescription("Photon Server Port", new AcceptableValueRange<int>(0, 65535)));
+            PhotonServerPort = Config.Bind("Photon", "Server Port", 5058, new ConfigDescription("Photon Server Port", new AcceptableValueRange<int>(0, 65535)));
             PhotonServerVersion = Config.Bind("Photon", "Server Version", 5, new ConfigDescription("Photon Server Version", new AcceptableValueRange<int>(4, 5)));
             
             PhotonConnectionProtocol = Config.Bind("Photon", "Protocol", "Udp", new ConfigDescription("Photon Protocol"));
